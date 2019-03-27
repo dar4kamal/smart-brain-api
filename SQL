@@ -1,0 +1,28 @@
+-- Create Tables
+create table users (
+	id serial not null primary key,
+	name varchar(50) not null,
+	email text unique not null,    
+    joined date not null
+);
+
+create table login (
+	id serial not null primary key,
+	password varchar(100) not null,
+	email text unique not null
+);
+
+create table history (
+	id serial not null primary key,
+	imageurl varchar(200),
+	rank bigint default 0,
+	email text not null
+);
+
+alter table history 
+	add constraint uq_img_usr unique (imageurl, email);
+
+-- Delete all Records
+delete from login;
+delete from users;
+delete from history;
