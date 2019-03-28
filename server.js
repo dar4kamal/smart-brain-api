@@ -23,7 +23,10 @@ const PORT = process.env.PORT;
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/", getUsers.handleShowUsers(db))
+// app.get("/", getUsers.handleShowUsers(db))
+app.get("/", (req, res) => {
+    res.json("Api Is Working .... ")
+})
 app.post("/signin", signin.handleSignin(db, bcrypt))
 app.post("/register", register.handleRegister(db, bcrypt))
 app.get("/profile/:userId", profile.handleProfileGet(db))
